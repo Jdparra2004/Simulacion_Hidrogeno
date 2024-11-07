@@ -1,49 +1,51 @@
+# Importamos las bibliotecas necesarias
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
-# Parámetros del problema
+# Definimos los parámetros del problema
 Ro = 2.0e-2  # Radio externo [m]
 Ri = Ro - 3.0e-3  # Radio interno [m]
-Cin = 0.1  # Concentración en r = Ri
-Cout = 0.0  # Concentración en r = Ro
+Cin = 0.1  # Concentración en r = Ri (condición de contorno interna)
+Cout = 0.0  # Concentración en r = Ro (condición de contorno externa)
 D = 1.0e-8  # Coeficiente de difusión [m²/s]
 
-# Discretización
-n = 100  # Número de puntos en r
-r = np.linspace(Ri, Ro, n)
+# Configuramos la discretización espacial
+n = 100  # Número de puntos en la dirección radial
+r = np.linspace(Ri, Ro, n)  # Crea un array de n puntos equidistantes entre Ri y Ro
 
-# Ecuación de difusión en coordenadas cilíndricas:
-# ∂C/∂t = D * (∂²C/∂r² + (1/r)∂C/∂r)
+# Definimos la ecuación de difusión en coordenadas cilíndricas
 def diffusion_cylindrical(C, r, D):
     """
     Implementa la ecuación de difusión en coordenadas cilíndricas
     dC/dt = D * (d²C/dr² + (1/r)dC/dr)
     """
-    # Calculamos las derivadas
-    dCdr = np.gradient(C, r)  # Primera derivada
-    d2Cdr2 = np.gradient(dCdr, r)  # Segunda derivada
+    # Calculamos las derivadas espaciales
+    dCdr = np.gradient(C, r)  # Primera derivada respecto a r
+    d2Cdr2 = np.gradient(dCdr, r)  # Segunda derivada respecto a r
     
-    # Término (1/r)∂C/∂r
+    # Calculamos el término radial (1/r)∂C/∂r
     radial_term = dCdr / r
     
+    # Retornamos la expresión completa de la ecuación de difusión
     return D * (d2Cdr2 + radial_term)
 
-# Condición inicial
+# Definimos la condición inicial
 def initial_condition(r):
     """Condición inicial: distribución lineal entre Cin y Cout"""
     return Cout + (Cin - Cout) * (Ro - r)/(Ro - Ri)
 
-# Tiempo de simulación
-t = np.linspace(0, 5*3600, 1000)  # 5 horas en segundos
+# Configuramos el tiempo de simulación
+t = np.linspace(0, 5*3600, 1000)  # 5 horas en segundos, 1000 puntos
 
-# Resolver la ecuación
-C0 = initial_condition(r)
+# Resolvemos la ecuación diferencial
+C0 = initial_condition(r)  # Condición inicial
+# odeint resuelve la ecuación diferencial. Le pasamos la función, la condición inicial y los tiempos
 solution = odeint(lambda C, t: diffusion_cylindrical(C, r, D), C0, t)
 
-# Graficar resultados
+# Graficamos los resultados
 plt.figure(figsize=(10, 6))
-times_to_plot = [0, int(len(t)/4), int(len(t)/2), int(3*len(t)/4), -1]
+times_to_plot = [0, int(len(t)/4), int(len(t)/2), int(3*len(t)/4), -1]  # Seleccionamos tiempos para graficar
 for i in times_to_plot:
     plt.plot(r*1000, solution[i], label=f't = {t[i]/3600:.1f} h')
 
@@ -54,9 +56,9 @@ plt.grid(True)
 plt.legend()
 plt.show()
 
-# Graficar evolución temporal en diferentes posiciones radiales
+# Graficamos la evolución temporal en diferentes posiciones radiales
 plt.figure(figsize=(10, 6))
-positions = [0, int(n/4), int(n/2), int(3*n/4), -1]
+positions = [0, int(n/4), int(n/2), int(3*n/4), -1]  # Seleccionamos posiciones radiales para graficar
 for i in positions:
     plt.plot(t/3600, solution[:, i], label=f'r = {r[i]*1000:.1f} mm')
 
@@ -67,14 +69,14 @@ plt.grid(True)
 plt.legend()
 plt.show()
 
-# Graficar el perfil de concentración en 3D
-R, T = np.meshgrid(r*1000, t/3600)
+# Graficamos el perfil de concentración en 3D
+R, T = np.meshgrid(r*1000, t/3600)  # Creamos una malla 2D para r y t
 fig = plt.figure(figsize=(12, 8))
-ax = fig.add_subplot(111, projection='3d')
-surf = ax.plot_surface(R, T, solution, cmap='viridis')
+ax = fig.add_subplot(111, projection='3d')  # Creamos un subplot 3D
+surf = ax.plot_surface(R, T, solution, cmap='viridis')  # Graficamos la superficie
 ax.set_xlabel('Radio [mm]')
 ax.set_ylabel('Tiempo [h]')
 ax.set_zlabel('Concentración')
-plt.colorbar(surf)
+plt.colorbar(surf)  # Añadimos una barra de color
 plt.title('Evolución espacio-temporal de la concentración')
 plt.show()
