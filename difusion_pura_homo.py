@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import fsolve
+import time  # Importar el módulo time para medir el tiempo de ejecución
 
 # Parámetros del problema
 Ro = 2.0e-2  # Radio externo [m]
@@ -43,6 +44,9 @@ H = np.zeros((n, nt + 1))  # Matriz para almacenar resultados
 # Bucle principal de homotopía
 p_values = np.linspace(0, 1, 10)  # Valores de p para la homotopía
 
+# Iniciar el temporizador
+start_time = time.time()  # Marca el tiempo de inicio
+
 # Iteración sobre el tiempo
 for j in range(nt):
     C_old = C.copy()  # Almacena la concentración anterior
@@ -61,14 +65,21 @@ for j in range(nt):
     # Almacenar resultados
     H[:, j + 1] = C  # Guarda la concentración en la matriz de resultados
 
+# Calcular el tiempo total de ejecución
+end_time = time.time()  # Marca el tiempo de finalización
+execution_time = end_time - start_time  # Calcula el tiempo transcurrido
+
+# Imprimir el tiempo de ejecución
+print(f"Tiempo de ejecución: {execution_time:.2f} segundos")
+
 # Gráficas de resultados
 plt.figure(figsize=(10, 6))
 # Plotea la concentración vs radio para diferentes tiempos
 for i in range(0, nt + 1, nt // 5):
-    plt.plot(r * 1e3, H[:, i], label=f't={i * dt:.1f} hours')  # Convertir r a mm
-plt.xlabel('r [mm]')  
-plt.ylabel('C [mol/m³]')  
-plt.legend(loc='upper left', bbox_to_anchor=(1, 1)) 
-plt.title('Concentración vs radio')  
-plt.tight_layout()  
-plt.show() 
+    plt.plot(r * 1e3, H[:, i], label=f't={i * dt:.1f} horas')  # Convertir r a mm
+plt.xlabel('r [mm]')  # Etiqueta del eje x
+plt.ylabel('C [mol/m³]')  # Etiqueta del eje y
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1))  # Leyenda
+plt.title('Concentración vs radio')  # Título del gráfico
+plt.tight_layout()  # Ajustar el diseño
+plt.show()  # Mostrar el gráfico
