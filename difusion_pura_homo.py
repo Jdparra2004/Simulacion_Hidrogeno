@@ -66,9 +66,9 @@ plt.figure(figsize=(10, 6))
 # Plotea la concentración vs radio para diferentes tiempos
 for i in range(0, nt + 1, nt // 5):
     plt.plot(r * 1e3, H[:, i], label=f't={i * dt:.1f} hours')  # Convertir r a mm
-plt.xlabel('r [mm]')  # Etiqueta del eje x
-plt.ylabel('C [mol/m³]')  # Etiqueta del eje y
-plt.legend(loc='upper left', bbox_to_anchor=(1, 1))  # Leyenda
-plt.title('Concentración vs radio')  # Título del gráfico
-plt.tight_layout()  # Ajustar el diseño
-plt.show()  # Mostrar el gráfico
+plt.xlabel('r [mm]')  
+plt.ylabel('C [mol/m³]')  
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1)) 
+plt.title('Concentración vs radio')  
+plt.tight_layout()  
+plt.show() 
