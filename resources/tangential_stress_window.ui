@@ -92,39 +92,14 @@
 color: rgb(0, 0, 122);</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Parametros de esfuerzos tangenciales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="inputAngle">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>120</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>141</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>141</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="placeholderText">
-     <string>Ingrese el ángulo</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Esfuerzos tangenciales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonRunSimulation">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>190</y>
+      <x>620</x>
+      <y>130</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -151,14 +126,14 @@ color: rgb(0, 0, 122);</string>
 background-color: rgb(0, 0, 64);</string>
     </property>
     <property name="text">
-     <string>Ejecutar Simulación de Esfuerzos tangenciales</string>
+     <string>Ejecutar Simulación </string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonStopSimulation">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>270</y>
+      <x>640</x>
+      <y>210</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -191,8 +166,8 @@ background-color: rgb(0, 0, 64);</string>
    <widget class="QPushButton" name="returnToMenu">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>430</y>
+      <x>650</x>
+      <y>290</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -244,7 +219,7 @@ background-color: rgb(0, 0, 64);</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(177, 177, 177);</string>
     </property>
    </widget>
   </widget>
@@ -254,7 +229,7 @@ background-color: rgb(0, 0, 64);</string>
      <x>0</x>
      <y>0</y>
      <width>840</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

@@ -58,7 +58,7 @@
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(177, 177, 177);</string>
     </property>
    </widget>
    <widget class="QWidget" name="widget_2" native="true">
@@ -83,7 +83,7 @@
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(177, 177, 177);</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox">

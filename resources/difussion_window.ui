@@ -60,8 +60,8 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>90</y>
+      <x>160</x>
+      <y>40</y>
       <width>421</width>
       <height>381</height>
      </rect>
@@ -79,27 +79,27 @@
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(177, 177, 177);</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>20</y>
-      <width>251</width>
+      <x>610</x>
+      <y>60</y>
+      <width>211</width>
       <height>41</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>251</width>
+      <width>211</width>
       <height>41</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>251</width>
+      <width>211</width>
       <height>41</height>
      </size>
     </property>
@@ -114,39 +114,14 @@
 color: rgb(0, 0, 122);</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Parametros de esfuerzos radiales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="inputRadius">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>100</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>151</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>151</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="placeholderText">
-     <string>Ingrese el radio</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Difusión&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonRunSimulation">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>180</y>
+      <x>640</x>
+      <y>150</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -173,14 +148,14 @@ color: rgb(0, 0, 122);</string>
 background-color: rgb(0, 0, 64);</string>
     </property>
     <property name="text">
-     <string>Ejecutar Simulación de Esfuerzos Radiales</string>
+     <string>Ejecutar Simulación </string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonStopSimulation">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>260</y>
+      <x>640</x>
+      <y>230</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -213,8 +188,8 @@ background-color: rgb(0, 0, 64);</string>
    <widget class="QPushButton" name="returnToMenu">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>390</y>
+      <x>640</x>
+      <y>320</y>
       <width>151</width>
       <height>41</height>
      </rect>
