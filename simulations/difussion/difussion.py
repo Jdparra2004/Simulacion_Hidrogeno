@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Importar los resultados de los cálculos desde el módulo difussion
-from . import (
+from simulations.difussion import (
     Ro, Ri, Cin, Cout, D, E, nu, Omega, C0, pin, n, dr, S, t_end, nt, dt,
     H, r, Cflux
 )
