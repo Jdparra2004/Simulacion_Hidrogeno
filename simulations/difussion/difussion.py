@@ -2,6 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 # En diffusion.py
 from simulations.difussion import (
@@ -10,38 +11,47 @@ from simulations.difussion import (
 )
 
 def simulate_diffusion():
-    # Reducir la resolución para evitar sobrecarga
-    n_reduced = n // 10  # Reducir el número de nodos
-    r_reduced = np.linspace(Ri, Ro, n_reduced)  # Radio reducido
-    z = np.linspace(0, 1, 100)  # Longitud de la tubería
-    time_steps_to_plot = range(0, nt + 1, 20)  # Graficar cada 20 pasos de tiempo
+    # Definir la malla 3D para la tubería P80
+    z = np.linspace(0, 1, 50)  # Longitud de la tubería (reducido)
+    theta = np.linspace(0, 2 * np.pi, 50)  # Ángulo (reducido)
+    r = np.linspace(Ri, Ro, 50)  # Radio (reducido)
 
-    # Crear una cuadrícula 2D para la visualización
-    R, Z = np.meshgrid(r_reduced, z)
+    # Crear una cuadrícula 3D
+    R, Z = np.meshgrid(r, z)
+    Theta = np.meshgrid(theta)
 
-    # Simulación de la difusión
-    for time_step in time_steps_to_plot:
-        # Obtener la concentración de hidrógeno en el tiempo actual
-        C = H[:, time_step]  # Usar los resultados de la simulación
+    # Convertir a coordenadas cartesianas
+    X = R * np.cos(Theta[0])  # Coordenada X
+    Y = R * np.sin(Theta[0])  # Coordenada Y
 
-        # Asegurarse de que C tenga la forma correcta
-        if C.size != R.size:
-            C = np.repeat(C[:, np.newaxis], Z.shape[0], axis=1)  # Expandir C a la forma de Z
+    # Crear la figura para la visualización
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
 
-        # Normalizar C
-        if np.max(C) > 0:
-            normalized_C = C / np.max(C)
-        else:
-            normalized_C = np.zeros_like(C)  # Manejar el caso donde todos los valores son cero
+    # Seleccionar un paso de tiempo específico para la visualización
+    frame = nt // 2  # Por ejemplo, el paso de tiempo en el medio
 
-        # Visualizar la concentración en 2D
-        plt.figure()
-        plt.imshow(normalized_C, extent=[Ri, Ro, 0, 1], aspect='auto', origin='lower', cmap='viridis')
-        plt.colorbar(label='Concentración de Hidrógeno [mol/m³]')
-        plt.xlabel('Radio [m]')
-        plt.ylabel('Longitud [m]')
-        plt.title(f'Difusión de Hidrógeno en la Tubería P80 en t={time_step * dt:.2f} s')
-        plt.show()
+    # Obtener la concentración de hidrógeno en el tiempo actual
+    C = H[:, frame]  # Usar los resultados de la simulación
+
+    # Asegurarse de que C tenga la forma correcta
+    C_expanded = np.repeat(C[:, np.newaxis], Z.shape[0], axis=1)  # Expandir C a la forma de Z
+
+    # Normalizar C
+    if np.max(C_expanded) > 0:
+        normalized_C = C_expanded / np.max(C_expanded)
+    else:
+        normalized_C = np.zeros_like(C_expanded)  # Manejar el caso donde todos los valores son cero
+
+    # Graficar la superficie
+    surf = ax.plot_surface(X, Y, Z, facecolors=plt.cm.viridis(normalized_C), rstride=1, cstride=1, antialiased=True)
+
+    ax.set_xlabel('X [m]')
+    ax.set_ylabel('Y [m]')
+    ax.set_zlabel('Z [m]')
+    ax.set_title(f'Difusión de Hidrógeno en la Tubería P80 en t={frame * dt:.2f} s')
+    plt.colorbar(surf, label='Concentración de Hidrógeno [mol/m³]')
+    plt.show()
 
 if __name__ == "__main__":
     simulate_diffusion()
