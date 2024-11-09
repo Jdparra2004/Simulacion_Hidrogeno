@@ -116,26 +116,23 @@ def post_processing(n, nt, r, H, Hflux, Disp, HDisp, HStress_r, HStress_t, HStra
             HStrain_r[i] = epsi_r[i]
             HStrain_t[i] = epsi_t[i]
 
-# Main loop
-def main():
-    # Initialize parameters
-    Ro, Ri, Cin, Cout, D, E, nu, Omega, C0, pin, n, dr, S, t_end, nt, dt = initialize_parameters()
+# Inicializa los parámetros y las variables necesarias
+Ro, Ri, Cin, Cout, D, E, nu, Omega, C0, pin, n, dr, S, t_end, nt, dt = initialize_parameters()
 
-    # Initialize arrays
-    Cold, C, Disp, sigma_r, sigma_t, epsi_r, epsi_t, A, ADisp, rhs, rhsDisp, r, t, H, Cflux, Hflux, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t = initialize_arrays(n, nt, C0, Ri, Ro)
+# Inicializa los arreglos
+Cold, C, Disp, sigma_r, sigma_t, epsi_r, epsi_t, A, ADisp, rhs, rhsDisp, r, t, H, Cflux, Hflux, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t = initialize_arrays(n, nt, C0, Ri, Ro)
 
-    # Set up diffusion matrix
-    A, ADisp = setup_diffusion_matrix(A, ADisp, n, dr, D, S, dt, r, nu)
+# Configura la matriz de difusión
+A, ADisp = setup_diffusion_matrix(A, ADisp, n, dr, D, S, dt, r, nu)
 
-    # Solve diffusion
-    solve_diffusion(A, rhs, Cold, dt, nt, Cin, Cout, dr, D, r, S, H, Hflux, n)
+# Resuelve la difusión
+solve_diffusion(A, rhs, Cold, dt, nt, Cin, Cout, dr, D, r, S, H, Hflux, n)
 
-    # Solve displacement
-    solve_disp(ADisp, rhsDisp, Disp, H, HDisp, n, nt, dt, dr, Omega, pin, E, nu)
+# Resuelve el desplazamiento
+solve_disp(ADisp, rhsDisp, Disp, H, HDisp, n, nt, dt, dr, Omega, pin, E, nu)
 
-    # Post-processing
-    post_processing(n, nt, r, H, Hflux, Disp, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t, dt)
-
+# Procesamiento posterior
+post_processing(n, nt, r, H, Hflux, Disp, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t, dt)
 
 #grafica Concentracion vs r para cada tiempo    
 plt.figure()
