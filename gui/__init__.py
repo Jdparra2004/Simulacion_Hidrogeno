@@ -8,3 +8,6 @@ from gui.difussion_window import DifussionWindow
 from gui.radial_stress_window import RadialStressWindow
 from gui.tangential_stress_window import TangentialStressWindow
 from gui.comparison_window import ComparisonWindow
+
+# Importar la función de simulación
+from simulations.difussion import simulate_difussion  

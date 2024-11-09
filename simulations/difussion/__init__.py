@@ -8,6 +8,9 @@ from simulations import (
     post_processing
 )
 
+# Importar la función de simulación
+from simulations.difussion.difussion import simulate_difussion 
+
 # Inicializar parámetros
 Ro, Ri, Cin, Cout, D, E, nu, Omega, C0, pin, n, dr, S, t_end, nt, dt = initialize_parameters()
 

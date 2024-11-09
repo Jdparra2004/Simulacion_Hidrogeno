@@ -8,6 +8,7 @@ from gui.difussion_window import DifussionWindow
 from gui.radial_stress_window import RadialStressWindow
 from gui.tangential_stress_window import TangentialStressWindow
 from gui.comparison_window import ComparisonWindow
+from simulations.difussion import simulate_difussion 
 
 class MainWindow(QMainWindow):
     def __init__(self):
