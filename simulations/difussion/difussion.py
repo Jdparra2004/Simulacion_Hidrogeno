@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# Importar los resultados de los cálculos desde el módulo difussion
+# En diffusion.py
 from simulations.difussion import (
     Ro, Ri, Cin, Cout, D, E, nu, Omega, C0, pin, n, dr, S, t_end, nt, dt,
     H, r, Cflux
@@ -19,10 +19,6 @@ def simulate_diffusion():
     # Crear una cuadrícula 3D
     R, Z = np.meshgrid(r, z)
     Theta = np.meshgrid(theta)
-
-    # Convertir a coordenadas cartesianas
-    X = R * np.cos(Theta)
-    Y = R * np.sin(Theta)
 
     # Simulación de la difusión
     for time_step in range(nt + 1):

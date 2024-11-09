@@ -36,8 +36,8 @@ def initialize_arrays(n, nt, C0, Ri, Ro):
     r = np.linspace(Ri, Ro, n)
     t = np.linspace(0, nt * dt, nt + 1)
     H = np.zeros((n, nt + 1))
-    Cflux = np.zeros(n)
-    Hflux = np.zeros((n, nt + 1))
+    Cflux = np.zeros((n, nt + 1)) # Array de 2D
+    Hflux = np.zeros((n, nt + 1)) # Array de 2D
     HDisp = np.zeros((n, nt + 1))
     HStress_r = np.zeros((n, nt + 1))
     HStress_t = np.zeros((n, nt + 1))
@@ -67,6 +67,8 @@ def setup_diffusion_matrix(A, ADisp, n, dr, D, S, dt, r, nu):
     return A, ADisp
 
 def solve_diffusion(A, rhs, Cold, dt, nt, Cin, Cout, dr, D, r, S, H, Hflux, n):
+    Cflux = np.zeros((n, nt + 1))  # Asegúrate de que Cflux sea 2D
+
     for j in range(nt):
         for i in range(1, n - 1):
             rhs[i] = -Cold[i] / dt
@@ -76,12 +78,12 @@ def solve_diffusion(A, rhs, Cold, dt, nt, Cin, Cout, dr, D, r, S, H, Hflux, n):
         
         # post-processing de flujos
         for i in range(1, n - 1):
-            Cflux[i] = -2.0 * np.pi * r[i] * D * (C[i + 1] - C[i - 1]) / (2 * dr)
-        Cflux[0] = -2.0 * np.pi * r[0] * D * (-3 * C[0] + 4 * C[1] - C[2]) / (2 * dr)  
-        Cflux[n - 1] = -2.0 * np.pi * r[n - 1] * D * (3 * C[n - 1] - 4 * C[n - 2] + C[n - 3]) / (2 * dr)
+            Cflux[i, j + 1] = -2.0 * np.pi * r[i] * D * (C[i + 1] - C[i - 1]) / (2 * dr)
+        Cflux[0, j + 1] = -2.0 * np.pi * r[0] * D * (-3 * C[0] + 4 * C[1] - C[2]) / (2 * dr)  
+        Cflux[n - 1, j + 1] = -2.0 * np.pi * r[n - 1] * D * (3 * C[n - 1] - 4 * C[n - 2] + C[n - 3]) / (2 * dr)
         
         H[:, j + 1] = C
-        Hflux[:, j + 1] = Cflux
+        Hflux[:, j + 1] = Cflux[:, j + 1]  # Asegúrate de que esto sea correcto
         Cold[:] = C
 
 def solve_disp(ADisp, rhsDisp, Disp, H, HDisp, n, nt, dt, dr, Omega, pin, E, nu):
@@ -97,7 +99,7 @@ def solve_disp(ADisp, rhsDisp, Disp, H, HDisp, n, nt, dt, dr, Omega, pin, E, nu)
 def post_processing(n, nt, r, H, Hflux, Disp, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t, dt):
     tot_flux_in = 0
     tot_flux_out = 0
-    for i in range(nt):
+    for i in range(nt):  # Cambiado a range(nt)
         tot_flux_in += 0.5 * (Hflux[0, i] + Hflux[0, i + 1]) * S * dt
         tot_flux_out += 0.5 * (Hflux[n - 1, i] + Hflux[n - 1, i + 1]) * S * dt
     
@@ -142,4 +144,7 @@ plt.xlabel('r [mm]')
 plt.ylabel('C') 
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
 plt.show()
+
+print("Forma de Hflux:", Hflux.shape)
+print("Forma de Cflux:", Cflux.shape)
 
