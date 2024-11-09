@@ -1,57 +1,58 @@
-# simulations/difussion/difussion.py
-
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import animation
 
-# En diffusion.py
-from simulations.difussion import (
-    Ro, Ri, Cin, Cout, D, E, nu, Omega, C0, pin, n, dr, S, t_end, nt, dt,
-    H, r, Cflux
-)
+# Parámetros de la simulación
+radio_tubo = 0.02  # Radio de la tubería en metros
+longitud_tubo = 0.1  # Longitud de la tubería en metros
+tiempo_total = 5.0  # Tiempo total de simulación en segundos
+dt = 0.1  # Intervalo de tiempo para la animación
 
-def simulate_diffusion():
-    # Definir la malla 3D para la tubería P80
-    z = np.linspace(0, 1, 50)  # Longitud de la tubería (reducido)
-    theta = np.linspace(0, 2 * np.pi, 50)  # Ángulo (reducido)
-    r = np.linspace(Ri, Ro, 50)  # Radio (reducido)
+# Función de concentración de hidrógeno (puedes reemplazar con tu modelo)
+def concentracion_hidrogeno(x, y, z, t):
+    # Ejemplo de función de difusión simple, ajusta según tu modelo
+    return np.exp(-((x**2 + y**2) / (2 * (0.02 + t * 0.001)))) * np.exp(-z / (0.02 + t * 0.1))
 
-    # Crear una cuadrícula 3D
-    R, Z = np.meshgrid(r, z)
-    Theta = np.meshgrid(theta)
+# Configuración de la figura
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.set_xlim(-longitud_tubo / 2, longitud_tubo / 2)
+ax.set_ylim(-radio_tubo, radio_tubo)
+ax.set_zlim(-radio_tubo, radio_tubo)
+ax.set_xlabel("x [m]")
+ax.set_ylabel("y [m]")
+ax.set_zlabel("z [m]")
 
-    # Convertir a coordenadas cartesianas
-    X = R * np.cos(Theta[0])  # Coordenada X
-    Y = R * np.sin(Theta[0])  # Coordenada Y
+# Orientación horizontal de la tubería
+ax.view_init(elev=0, azim=90)
 
-    # Crear la figura para la visualización
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
+# Generación inicial de partículas
+num_particulas = 1000
+x_particulas = np.random.uniform(-longitud_tubo / 2, longitud_tubo / 2, num_particulas)
+y_particulas = np.random.uniform(-radio_tubo, radio_tubo, num_particulas)
+z_particulas = np.random.uniform(-radio_tubo, radio_tubo, num_particulas)
 
-    # Seleccionar un paso de tiempo específico para la visualización
-    frame = nt // 2  # Por ejemplo, el paso de tiempo en el medio
+# Filtrar partículas dentro del radio del tubo
+mascara_tubo = (y_particulas**2 + z_particulas**2) <= radio_tubo**2
+x_particulas = x_particulas[mascara_tubo]
+y_particulas = y_particulas[mascara_tubo]
+z_particulas = z_particulas[mascara_tubo]
 
-    # Obtener la concentración de hidrógeno en el tiempo actual
-    C = H[:, frame]  # Usar los resultados de la simulación
+# Crear dispersión de partículas
+sc = ax.scatter(x_particulas, y_particulas, z_particulas, c='yellow', marker='o', alpha=0.6)
 
-    # Asegurarse de que C tenga la forma correcta
-    C_expanded = np.repeat(C[:, np.newaxis], Z.shape[0], axis=1)  # Expandir C a la forma de Z
+# Función de actualización para la animación
+def actualizar(t):
+    # Calcular concentración en función del tiempo para cada partícula
+    concentraciones = concentracion_hidrogeno(x_particulas, y_particulas, z_particulas, t)
+    colores = plt.cm.plasma(concentraciones)  # Usar un mapa de color para las partículas
+    sc._facecolor3d = colores
+    sc._edgecolor3d = colores
+    ax.set_title(f"Simulación de Difusión de Hidrógeno en t = {t:.2f} s")
 
-    # Normalizar C
-    if np.max(C_expanded) > 0:
-        normalized_C = C_expanded / np.max(C_expanded)
-    else:
-        normalized_C = np.zeros_like(C_expanded)  # Manejar el caso donde todos los valores son cero
+# Crear la animación
+ani = animation.FuncAnimation(fig, actualizar, frames=np.arange(0, tiempo_total, dt), interval=100)
 
-    # Graficar la superficie
-    surf = ax.plot_surface(X, Y, Z, facecolors=plt.cm.viridis(normalized_C), rstride=1, cstride=1, antialiased=True)
-
-    ax.set_xlabel('X [m]')
-    ax.set_ylabel('Y [m]')
-    ax.set_zlabel('Z [m]')
-    ax.set_title(f'Difusión de Hidrógeno en la Tubería P80 en t={frame * dt:.2f} s')
-    plt.colorbar(surf, label='Concentración de Hidrógeno [mol/m³]')
-    plt.show()
-
-if __name__ == "__main__":
-    simulate_diffusion()
+plt.colorbar(sc, label="Concentración de Hidrógeno [mol/m³]")
+plt.show()
