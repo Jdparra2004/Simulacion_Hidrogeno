@@ -1,0 +1,35 @@
+proyecto/
+│
+├── main.py                 # Archivo principal para ejecutar la aplicación
+├── difussionH2_stress_Df.py   #Archivo base de calculos mediante diferencias finitas implícitas            
+├── difussionH2_stress_Homo.py   #Archivo de variación de párametros mediante Homotopia
+├── difussionH2_Homo.py          #Archivo de difusión simple en coordenadas cilindrícas  
+├── gui/                    # Carpeta para las interfaces de usuario
+│   ├── __init__.py
+│   ├── main_window.py      # Clase para la ventana principal
+│   ├── diffusion_window.py # Clase para la ventana de simulación de difusión
+│   ├── radial_stress_window.py  # Clase para la ventana de simulación de esfuerzos radiales
+│   ├── tangential_stress_window.py  # Clase para la ventana de simulación de esfuerzos tangenciales
+│   └── comparison_window.py  # Clase para la ventana de comparación de resultados
+├── simulations/            # Carpeta para los módulos de simulación
+│   ├── __init__.py
+│   ├── diffusion/          # Subcarpeta para simulaciones de difusión
+│   │   ├── __init__.py
+│   │   └── diffusion.py    # Código de simulación de difusión
+│   ├── radial_stress/      # Subcarpeta para simulaciones de esfuerzos radiales
+│   │   ├── __init__.py
+│   │   └── radial_stress.py  # Código de simulación de esfuerzos radiales
+│   └── tangential_stress/  # Subcarpeta para simulaciones de esfuerzos tangenciales
+│       ├── __init__.py
+│       └── tangential_stress.py  # Código de simulación de esfuerzos tangenciales
+├── utils/                  # Carpeta para las utilidades
+│   ├── __init__.py
+│   ├── calculations.py     # Funciones auxiliares para cálculos
+│   └── visualization.py    # Funciones auxiliares para visualización
+└── resources/              # Carpeta para los archivos de recursos
+    ├── main_window.ui      # Archivo .ui para la ventana principal
+    ├── diffusion_window.ui # Archivo .ui para la ventana de simulación de difusión
+    ├── radial_stress_window.ui  # Archivo .ui para la ventana de simulación de esfuerzos radiales
+    └── tangential_stress_window.ui  # Archivo .ui para la ventana de simulación de esfuerzos tangenciales
+    └── comparison_window.ui  # Archivo .ui para la ventana de comparación de métodos de solución de Homotopia 
+        y Diferencias finitas
