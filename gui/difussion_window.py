@@ -19,7 +19,6 @@ class DifussionWindow(QMainWindow):
 
         # Conectar botones con métodos
         self.buttonRunSimulation.clicked.connect(self.RunSimulation)
-        self.buttonStopSimulation.clicked.connect(self.StopSimulation)
         self.returnToMenu.clicked.connect(self.VolverMenu)
 
     def RunSimulation(self):
@@ -39,12 +38,6 @@ class DifussionWindow(QMainWindow):
         # Agregar el canvas de la gráfica al layout
         self.layout.addWidget(canvas)  # Agregar el canvas al layout
         canvas.draw()  # Dibujar el canvas
-
-    def StopSimulation(self):
-        if self.simulation_running:  # Solo detener si hay una simulación en curso
-            self.simulation_running = False
-            # Limpiar el layout para borrar la gráfica
-            self.plot_graph(None)  # Llama a la función para limpiar la gráfica
 
     def VolverMenu(self):
         self.close()

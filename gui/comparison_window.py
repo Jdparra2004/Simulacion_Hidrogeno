@@ -2,6 +2,8 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QApplication
 from PyQt5 import uic
 
+from simulations.difussion import simulate_difussion  
+
 class ComparisonWindow(QMainWindow):
     def __init__(self, main_window):
         super().__init__()
