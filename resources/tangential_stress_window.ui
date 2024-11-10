@@ -34,20 +34,20 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>121</width>
-      <height>121</height>
+      <width>91</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>121</width>
-      <height>121</height>
+      <width>91</width>
+      <height>81</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>121</width>
-      <height>121</height>
+      <width>91</width>
+      <height>81</height>
      </size>
     </property>
     <property name="text">
@@ -129,45 +129,11 @@ background-color: rgb(0, 0, 64);</string>
      <string>Ejecutar Simulación </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonStopSimulation">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>220</y>
-      <width>131</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>131</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>131</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Georgia</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 64);</string>
-    </property>
-    <property name="text">
-     <string>Detener Simulación</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="returnToMenu">
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>300</y>
+      <y>220</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -200,22 +166,22 @@ background-color: rgb(0, 0, 64);</string>
    <widget class="QWidget" name="WTangencial" native="true">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>50</y>
-      <width>431</width>
-      <height>361</height>
+      <x>100</x>
+      <y>40</y>
+      <width>461</width>
+      <height>421</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>431</width>
-      <height>361</height>
+      <width>461</width>
+      <height>421</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>431</width>
-      <height>361</height>
+      <width>461</width>
+      <height>421</height>
      </size>
     </property>
     <property name="styleSheet">
@@ -229,7 +195,7 @@ background-color: rgb(0, 0, 64);</string>
      <x>0</x>
      <y>0</y>
      <width>840</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

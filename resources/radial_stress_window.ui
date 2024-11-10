@@ -34,20 +34,20 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>131</width>
-      <height>111</height>
+      <width>81</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>131</width>
-      <height>111</height>
+      <width>81</width>
+      <height>71</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>131</width>
-      <height>111</height>
+      <width>81</width>
+      <height>71</height>
      </size>
     </property>
     <property name="text">
@@ -63,22 +63,22 @@
    <widget class="QWidget" name="WRadial" native="true">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>60</y>
-      <width>411</width>
-      <height>331</height>
+      <x>90</x>
+      <y>10</y>
+      <width>481</width>
+      <height>441</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>411</width>
-      <height>331</height>
+      <width>481</width>
+      <height>441</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>411</width>
-      <height>331</height>
+      <width>481</width>
+      <height>441</height>
      </size>
     </property>
     <property name="styleSheet">
@@ -89,7 +89,7 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>70</y>
+      <y>30</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -124,7 +124,7 @@ color: rgb(0, 0, 122);</string>
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>140</y>
+      <y>120</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -154,45 +154,11 @@ background-color: rgb(0, 0, 64);</string>
      <string>Ejecutar Simulación</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonStopSimulation">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>210</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>151</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>151</width>
-      <height>41</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Georgia</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 64);</string>
-    </property>
-    <property name="text">
-     <string>Detener Simulación </string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="returnToMenu">
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>290</y>
+      <y>210</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -229,7 +195,7 @@ background-color: rgb(0, 0, 64);</string>
      <x>0</x>
      <y>0</y>
      <width>840</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
