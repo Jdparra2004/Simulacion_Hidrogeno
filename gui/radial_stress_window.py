@@ -47,9 +47,9 @@ class RadialStressWindow(QMainWindow):
         post_processing(n, nt, r, H, Cflux, Disp, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t, dt)
 
         # Crear el gráfico de desplazamiento
-        self.plot_disp_graph(r, HDisp, nt, dt)  # Llama a la función para graficar
+        self.plot_disp_graph(r, HStress_r, nt, dt)  # Llama a la función para graficar
 
-    def plot_disp_graph(self, r, HDisp, nt, dt):
+    def plot_disp_graph(self, r, HStress_r, nt, dt):
         # Limpiar el layout antes de agregar nuevos gráficos
         for i in reversed(range(self.layout.count())): 
             widget = self.layout.itemAt(i).widget()
@@ -59,9 +59,9 @@ class RadialStressWindow(QMainWindow):
         # Crear un nuevo canvas para el gráfico
         fig, ax = plt.subplots(figsize=(10, 6))
         
-        # Graficar el desplazamiento para diferentes tiempos
-        for i in range(0, nt + 1, 200):  # Graficar cada 100 pasos de tiempo
-            ax.plot(r * 1e3, HDisp[:, i] * 1e3, label=f't={i * dt / (365 * 24 * 3600):.1f} años')  # Convertir r a mm y HDisp a mm
+        #grafica sigma_r vs radio para cada tiempo
+        for i in range(0, nt + 1, 100):  # Graficar cada 100 pasos de tiempo
+            ax.plot(r * 1e3, HStress_r[:, i] * 1e3, label=f't={i*dt:.1f} years') 
         
         ax.set_xlabel('r [mm]')
         ax.set_ylabel('Desplazamiento [mm]')
