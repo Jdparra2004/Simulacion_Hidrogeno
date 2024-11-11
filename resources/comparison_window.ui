@@ -86,7 +86,7 @@
      <string notr="true">background-color: rgb(177, 177, 177);</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="CGraficos">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -107,6 +107,56 @@
       <height>21</height>
      </size>
     </property>
+    <item>
+     <property name="text">
+      <string>None</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Concentración vs r</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Concentración vs tiempo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Flujo vs r</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Flujo interno y externo vs tiempo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Desplazamiento vs radio</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sigma_r vs radio</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sigma_t vs radio</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Epsilon_r vs radio</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Epsilon_t vs radio</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
