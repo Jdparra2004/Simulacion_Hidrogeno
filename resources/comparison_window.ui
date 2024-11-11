@@ -36,37 +36,12 @@
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="WHomo" native="true">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>90</y>
-      <width>381</width>
-      <height>321</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>381</width>
-      <height>321</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>381</width>
-      <height>321</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(177, 177, 177);</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="WDif" native="true">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>90</y>
-      <width>381</width>
+      <width>781</width>
       <height>321</height>
      </rect>
     </property>
@@ -78,8 +53,8 @@
     </property>
     <property name="maximumSize">
      <size>
-      <width>381</width>
-      <height>321</height>
+      <width>20000</width>
+      <height>20000</height>
      </size>
     </property>
     <property name="styleSheet">
@@ -161,9 +136,9 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>50</y>
-      <width>211</width>
+      <x>260</x>
+      <y>40</y>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
@@ -175,8 +150,8 @@
     </property>
     <property name="maximumSize">
      <size>
-      <width>211</width>
-      <height>31</height>
+      <width>2000</width>
+      <height>2000</height>
      </size>
     </property>
     <property name="font">
@@ -190,42 +165,7 @@
 color: rgb(0, 0, 122);</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Diferencias Finitas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>50</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>141</width>
-      <height>31</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>141</width>
-      <height>31</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Georgia</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-
-color: rgb(0, 0, 122);</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Homotopia&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Resultados Diferencias Finitas&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -262,7 +202,7 @@ color: rgb(0, 0, 122);</string>
    <widget class="QPushButton" name="buttonDifFinitas">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>540</x>
       <y>430</y>
       <width>141</width>
       <height>31</height>
@@ -291,40 +231,6 @@ background-color: rgb(0, 0, 64);</string>
     </property>
     <property name="text">
      <string>Diferencias Finitas</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonHomotopia">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>430</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>121</width>
-      <height>31</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>121</width>
-      <height>31</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Georgia</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 64);</string>
-    </property>
-    <property name="text">
-     <string>Homotopia</string>
     </property>
    </widget>
    <widget class="QPushButton" name="returnToMenu">

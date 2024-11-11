@@ -15,7 +15,6 @@ class ComparisonWindow(QMainWindow):
         
         #botones
         self.buttonDifFinitas.clicked.connect(self.DifFinitas)
-        self.buttonHomotopia.clicked.connect(self.Homotopia)
         self.returnToMenu.clicked.connect(self.VolverMenu)
         
     def DifFinitas(self):
