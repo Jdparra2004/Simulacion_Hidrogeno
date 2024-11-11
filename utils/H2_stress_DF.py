@@ -116,20 +116,26 @@ for j in range(n_tiempos+1):
     historial_deformacion_radial[:,j]=deformacion_radial
     historial_deformacion_tangencial[:,j]=deformacion_tangencial
 
-# gráfica esfuerzo_radial vs radio para cada tiempo
-plt.figure()
-for i in range(0,n_tiempos+1,100):
-    plt.plot(r*1e3,historial_esfuerzo_radial[:,i],label=f't={i*dt:.1f} años') 
-plt.xlabel('r [mm]')
-plt.ylabel('$\sigma_r$ [Pa]') 
-plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
-
-# gráfica esfuerzo_tangencial vs radio para cada tiempo
-plt.figure()
-for i in range(0,n_tiempos+1,100):
-    plt.plot(r*1e3,historial_esfuerzo_tangencial[:,i],label=f't={i*dt:.1f} años') 
-plt.xlabel('r [mm]')
-plt.ylabel(r'$\sigma_\theta$ [Pa]')  
-plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
-
-plt.show()
+# función para retornar las figuras
+def generar_graficas(r, historial_esfuerzo_radial, historial_esfuerzo_tangencial, dt, n_tiempos):
+    figuras = []
+    
+    # Figura de esfuerzo radial
+    fig_radial = plt.figure()
+    for i in range(0, n_tiempos+1, 100):
+        plt.plot(r * 1e3, historial_esfuerzo_radial[:, i], label=f't={i * dt:.1f} años') 
+    plt.xlabel('r [mm]')
+    plt.ylabel('$\sigma_r$ [Pa]')
+    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+    figuras.append(fig_radial)
+    
+    # Figura de esfuerzo tangencial
+    fig_tangencial = plt.figure()
+    for i in range(0, n_tiempos+1, 100):
+        plt.plot(r * 1e3, historial_esfuerzo_tangencial[:, i], label=f't={i * dt:.1f} años')
+    plt.xlabel('r [mm]')
+    plt.ylabel(r'$\sigma_\theta$ [Pa]')
+    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+    figuras.append(fig_tangencial)
+    
+    return figuras

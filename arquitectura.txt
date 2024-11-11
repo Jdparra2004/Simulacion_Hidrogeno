@@ -13,16 +13,10 @@ proyecto/
 │   ├── difussion/          # Subcarpeta para simulaciones de difusión
 │   │   ├── __init__.py
 │   │   └── diffusion.py    # Código de simulación de difusión
-│   ├── radial_stress/      # Subcarpeta para simulaciones de esfuerzos radiales
-│   │   ├── __init__.py
-│   │   └── radial_stress.py  # Código de simulación de esfuerzos radiales
-│   └── tangential_stress/  # Subcarpeta para simulaciones de esfuerzos tangenciales
-│       ├── __init__.py
-│       └── tangential_stress.py  # Código de simulación de esfuerzos tangenciales
 ├── utils/                  # Carpeta para las utilidades
 │   ├── __init__.py
 │   ├── difussionH2_stress_Df.py   #Archivo base de calculos mediante diferencias finitas implícitas            
-│   ├── difussionH2_Homo.py   #Archivo de variación de párametros mediante Homotopia
+│   ├── H2_stress_DF.py   #Archivo de cálculos de estrés
 └── resources/              # Carpeta para los archivos de recursos
     ├── main_window.ui      # Archivo .ui para la ventana principal
     ├── diffusion_window.ui # Archivo .ui para la ventana de simulación de difusión
