@@ -19,4 +19,4 @@ solve_disp(ADisp, rhsDisp, Disp, H, HDisp, n, nt, dt, dr, Omega, pin, E, nu)
 post_processing(n, nt, r, H, Cflux, Disp, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t, dt)
 
 # Importar la función de generar gráficas
-from utils import generar_graficas
+from utils.H2_stress_DF import generar_graficas
