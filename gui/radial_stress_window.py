@@ -59,14 +59,14 @@ class RadialStressWindow(QMainWindow):
         # Crear un nuevo canvas para el gráfico
         fig, ax = plt.subplots(figsize=(10, 6))
         
-        #grafica sigma_r vs radio para cada tiempo
+        # Gráfica sigma_r vs radio para cada tiempo
         for i in range(0, nt + 1, 100):  # Graficar cada 100 pasos de tiempo
-            ax.plot(r * 1e3, HStress_r[:, i] * 1e3, label=f't={i*dt:.1f} years') 
-        
+            ax.plot(r * 1e3, HStress_r[:, i], label=f't={i * dt:.1f} años')  # Asegúrate de que las unidades sean las mismas
+            
         ax.set_xlabel('r [mm]')
-        ax.set_ylabel('Desplazamiento [mm]')
+        ax.set_ylabel(r'$\sigma_r$ [Pa]')  # Asegúrate de que la etiqueta sea la correcta
         ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
-        ax.set_title('Desplazamiento vs radio (5 años)')
+        ax.set_title('Esfuerzo Radial vs Radio')
         ax.grid()
 
         # Crear un canvas y agregarlo al layout
