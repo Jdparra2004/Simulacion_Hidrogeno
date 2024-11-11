@@ -1,7 +1,7 @@
 # utils/__init__.py
 
 # Importar las funciones necesarias del archivo difussionH2_stress_DF.py
-from .difussionH2_stress_DF import (
+from utils.difussionH2_stress_DF import (
     initialize_parameters,
     initialize_arrays,
     setup_diffusion_matrix,
@@ -19,4 +19,28 @@ solve_disp(ADisp, rhsDisp, Disp, H, HDisp, n, nt, dt, dr, Omega, pin, E, nu)
 post_processing(n, nt, r, H, Cflux, Disp, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t, dt)
 
 # Importar la función de generar gráficas
-from .H2_stress_DF import generar_graficas
+from utils.H2_stress_DF import generar_graficas
+
+# Importar las variables y funciones necesarias del archivo H2_stress_DF.py
+from utils.H2_stress_DF import (
+    radio_exterior,
+    radio_interior,
+    concentracion_entrada,
+    concentracion_salida,
+    difusividad,
+    modulo_elasticidad,
+    coef_poisson,
+    frecuencia,
+    concentracion_inicial,
+    presion_entrada,
+    nodos,
+    d_r,
+    segundos,
+    tiempo_final,
+    n_tiempos,
+    dt,
+    r,
+    historial_esfuerzo_radial,
+    historial_esfuerzo_tangencial,
+    generar_graficas  
+)

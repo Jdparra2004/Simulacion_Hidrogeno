@@ -107,26 +107,6 @@
       <height>21</height>
      </size>
     </property>
-    <item>
-     <property name="text">
-      <string>None</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Modelo de Difusión</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Modelo Estres Radial</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Modelo Estres Tangencial</string>
-     </property>
-    </item>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">

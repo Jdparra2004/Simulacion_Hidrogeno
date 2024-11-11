@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 from PyQt5 import uic
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from utils.H2_stress_DF import generar_graficas  # Importar la función que genera fig_radial
+from utils import generar_graficas, r, historial_esfuerzo_radial, historial_esfuerzo_tangencial, dt, n_tiempos
 
 class RadialStressWindow(QMainWindow):
     def __init__(self, main_window):
@@ -10,7 +10,7 @@ class RadialStressWindow(QMainWindow):
         self.main_window = main_window
 
         # Conectar directamente al QWidget llamado WRadial en el archivo .ui
-        self.graphWidget = self.WRadial  
+        self.graphWidget = self.WRadial
         self.layout = QVBoxLayout(self.graphWidget)  # Crear un layout vertical para el widget
 
         # Inicializar el canvas
@@ -27,7 +27,7 @@ class RadialStressWindow(QMainWindow):
 
             # Verificar que figuras no esté vacío
             if figuras:
-                # Seleccionar la figura radial (figuras[0])
+                # Seleccionar la figura radial (figuras[0]) 
                 fig_radial = figuras[0]
 
                 # Mostrar fig_radial en el QWidget de la interfaz
