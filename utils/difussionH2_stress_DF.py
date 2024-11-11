@@ -136,16 +136,24 @@ solve_disp(ADisp, rhsDisp, Disp, H, HDisp, n, nt, dt, dr, Omega, pin, E, nu)
 # Procesamiento posterior
 post_processing(n, nt, r, H, Hflux, Disp, HDisp, HStress_r, HStress_t, HStrain_r, HStrain_t, dt)
 
-'''
-#grafica Concentracion vs r para cada tiempo    
+#grafica sigma_r vs radio para cada tiempo
 plt.figure()
 for i in range(0,nt+1,100):
-    plt.plot(r*1e3,H[:,i],label=f't={i*dt:.1f} years') 
+    plt.plot(r*1e3,HStress_r[:,i],label=f't={i*dt:.1f} years') 
 plt.xlabel('r [mm]')
-plt.ylabel('C') 
+plt.ylabel('$\sigma_r$ [Pa]') 
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+
+#grafica sigma_t vs radio para cada tiempo
+plt.figure()
+for i in range(0,nt+1,100):
+    plt.plot(r*1e3,HStress_t[:,i],label=f't={i*dt:.1f} years') 
+plt.xlabel('r [mm]')
+plt.ylabel(r'$\sigma_\theta$ [Pa]')  
+#https://stackoverflow.com/questions/10370760/matplotlib-axis-label-theta-does-not-work-theta-does
+#If you specify that the string is raw text (a r before the quotation mark), it works
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
 plt.show()
-'''
 print("Forma de Hflux:", Hflux.shape)
 print("Forma de Cflux:", Cflux.shape)
 
