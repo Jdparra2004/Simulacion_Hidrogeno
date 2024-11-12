@@ -133,9 +133,9 @@ class ComparisonWindow(QMainWindow):
             HStrain_t[:,j]=epsi_t
         
         # Mostrar el gráfico seleccionado
-        self.plot_graph(H, Hflux, HDisp, HStress_r, HStress_t, r, t, nt, dt)
+        self.plot_graph(H, Hflux, HDisp, HStress_r, HStress_t, r, t, nt, dt, dr, n, HStrain_r, HStrain_t)
             
-    def plot_graph(self, H, Hflux, HDisp, HStress_r, HStress_t, r, t, nt, dt):
+    def plot_graph(self, H, Hflux, HDisp, HStress_r, HStress_t, r, t, nt, dt, dr, n, HStrain_r, HStrain_t):
         # Limpiar el widget WDif antes de graficar
         for i in reversed(range(self.layout.count())):
             widget = self.layout.itemAt(i).widget()

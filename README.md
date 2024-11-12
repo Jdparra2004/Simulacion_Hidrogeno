@@ -20,7 +20,4 @@ El tiempo de ejecución  y los recursos que exige el proyecto son altos
 
 De no poder ejecutar el proyecto, recomendable visualizar el github y abrirlo en VS CODE
 
-    Para la ejecución en VS CODE, abrir la carpeta donde está todo el proyecto, posterior a esto abrir una terminal con el comando "ctrl + ñ"
-	Y posterior a esto en consola escribir el comando "python main.py"
-
 Enlace al GitHub:https://github.com/Jdparra2004/Simulacion_Hidrogeno
